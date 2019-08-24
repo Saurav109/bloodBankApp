@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_fragment_nav"
+        android:title="Home"
+        android:icon="@drawable/home_icon"/>
+    <item
+        android:id="@+id/blood_bank_fragment_nav"
+        android:title="Bank"
+        android:icon="@drawable/bank_icon"/>
+    <item android:id="@+id/donner_fragment_nav"
+        android:title="Donner"
+        android:icon="@drawable/list_icon"/>
+    <item
+        android:id="@+id/notification_fragment_nav"
+        android:title="Notification"
+        android:icon="@drawable/notification_icon"/>
+
+    <item
+        android:id="@+id/profile_fragment_nav"
+        android:title="profile"
+        android:icon="@drawable/profile_icon"/>
+</menu>

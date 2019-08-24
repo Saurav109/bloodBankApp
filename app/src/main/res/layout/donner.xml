@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <TextView
+        android:padding="13sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:text="All Donner"/>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp">
+        <TextView
+            android:textStyle="bold"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:drawableStart="@drawable/map_icon"
+            android:id="@+id/show_map_donner"
+            android:onClick="showOnMap"
+            android:padding="7sp"
+            android:textSize="23sp"
+            android:text="Show all donner on map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
+    <FrameLayout
+        android:id="@+id/donner_feed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

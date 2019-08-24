@@ -1,0 +1,90 @@
+<resources>
+
+    <string name="app_name">Blood db</string>
+
+    <string-array name="blood_group_list">
+        <item>O+</item>
+        <item>O-</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
+
+    <string-array name="all_location">
+        <item>Adabor</item>
+        <item>Uttar Khan</item>
+        <item>Kadamtali</item>
+        <item>Uttara</item>
+        <item>Kalabagan</item>
+        <item>Kafrul</item>
+        <item>Kamrangirchar</item>
+        <item>Cantonment</item>
+        <item>Kotwali</item>
+        <item>Khilkhet</item>
+        <item>Khilgaon</item>
+        <item>Gulshan</item>
+        <item>Gendaria</item>
+        <item>Chawkbazar Model</item>
+        <item>Demra</item>
+        <item>Turag</item>
+        <item>Tejgaon</item>
+        <item>Tejgaon I/A</item>
+        <item>Dakshinkhan</item>
+        <item>Darus Salam</item>
+        <item>Dhanmondi</item>
+        <item>New Market</item>
+        <item>Paltan</item>
+        <item>Pallabi</item>
+        <item>Bangshal</item>
+        <item>Bimanbandar</item>
+        <item>Motijheel</item>
+        <item>Mirpur Model</item>
+        <item>Mohammadpur</item>
+        <item>Jatrabari</item>
+        <item>Ramna</item>
+        <item>Rampura</item>
+        <item>Lalbagh</item>
+        <item>Shah Ali</item>
+        <item>Shahbagh</item>
+        <item>Sher-e-Bangla Nagar</item>
+        <item>Shyampur</item>
+        <item>Sabujbagh</item>
+        <item>Sutrapur</item>
+        <item>Hazaribagh</item>
+    </string-array>
+
+
+    <string name="alt_text_login">alternative login describing text</string>
+    <string name="login_title">Login</string>
+    <string name="login_button_text">Login</string>
+    <string name="alt_text_sign_up">Your blood can save someone\'s life</string>
+    <string name="sign_up_title">Sign up</string>
+    <string name="sign_up_button_text">Sign up</string>
+    <string name="enter_email">enter email</string>
+    <string name="enter_password">enter password</string>
+    <string name="enter_password_again_to_confirm">enter password again to confirm</string>
+    <string name="enter_name">enter name</string>
+    <string name="mobile_no">mobile no.</string>
+    <string name="enter_something_about_you">enter something about you(not required)</string>
+    <string name="enter_location">enter location</string>
+    <string name="enter_your_occupation">enter your occupation</string>
+    <string name="enter_blood_group">enter blood group</string>
+    <string name="logo">logo</string>
+    <string name="sign_up_button_in_login">Click to sign up, if you don\'t have account</string>
+    <string name="back_to_login">back to login</string>
+    <string name="enter_your_birth_date">enter your birth date</string>
+    <string name="patient_name">patient name</string>
+    <string name="write_something">Write something</string>
+    <string name="location_or_hospital">location or hospital</string>
+    <string name="request_blood">Request Blood</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset">reset</string>
+    <string name="search_blood">search blood…</string>
+    <string name="forget_password">forget password</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="search_location">search location</string>
+
+</resources>

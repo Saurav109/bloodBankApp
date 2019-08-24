@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="7sp"
+    android:layout_marginEnd="7sp"
+    android:layout_marginBottom="7sp"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/blood_group_view_model"
+            android:textColor="@color/white"
+            android:background="@drawable/blood_style"
+            android:padding="13sp"
+            android:layout_margin="7sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B+"
+            android:textSize="43sp"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/delete_post_icon_view_model"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:tint="@color/colorAccent"
+                android:src="@drawable/close_icon"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="7sp">
+                <ImageView
+                    android:id="@+id/done_icon_view_model"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/done_icon"/>
+                <TextView
+                    android:textSize="27sp"
+                    android:id="@+id/comment_view_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/write_something" />
+                <TextView
+                    android:textSize="17sp"
+                    android:id="@+id/patient_name_view_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/patient_name" />
+
+
+                <TextView
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawableStart="@drawable/map_icon"
+                    android:textSize="17sp"
+                    android:id="@+id/location_view_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/location_or_hospital" />
+
+                <TextView
+                    android:drawableStart="@drawable/call_icon"
+                    android:textSize="17sp"
+                    android:id="@+id/mobile_view_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/mobile_no" />
+
+                <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/time_view_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="time" />
+                <Button
+                    android:drawableStart="@drawable/done_icon"
+                    android:background="@drawable/empty_blood_style"
+                    android:text="blood found"
+                    android:id="@+id/blood_found_button_view_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--<TextView-->
+                <!--android:id="@+id/blood_group_view_model"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:entries="@array/blood_group_list"-->
+                <!--android:text="@string/enter_blood_group" />-->
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7sp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:drawablePadding="7sp"
+                        android:gravity="center_vertical"
+                        android:drawableStart="@mipmap/ic_launcher"
+                        android:padding="13sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textSize="23sp" />
+                    <TextView
+                        android:layout_marginLeft="17sp"
+                        android:layout_marginBottom="17sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/alt_text_sign_up"
+                        android:textSize="17sp"
+                        android:textStyle="italic"
+                        />
+                    <TextView
+                        android:layout_margin="7sp"
+                        android:gravity="clip_vertical"
+                        android:background="@drawable/search_background"
+                        android:drawableStart="@drawable/search_icon"
+                        android:id="@+id/search_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Click to Search..."
+                        android:padding="13sp"
+                        android:textSize="17sp"/>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <FrameLayout
+                android:id="@+id/request_parent_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp">
+                <TextView
+                    android:textStyle="bold"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:drawableStart="@drawable/map_icon"
+                    android:id="@+id/showMap"
+                    android:onClick="showOnMap"
+                    android:padding="7sp"
+                    android:textSize="23sp"
+                    android:text="Show all donner on map"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
+            <TextView
+                android:padding="13sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:text="Recent Blood Request"/>
+            <FrameLayout
+                android:id="@+id/feed_parent_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <EditText
+        android:drawableStart="@drawable/search_icon"
+        android:layout_margin="7sp"
+        android:background="@drawable/search_background"
+        android:padding="17sp"
+        android:id="@+id/search_location_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_location" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/location_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10sp"
+    android:background="@color/white"
+    android:elevation="13sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="7sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15sp"
+            android:text="Request Blood"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Blood Group"
+            android:textSize="17sp"
+            android:layout_marginBottom="10sp"/>
+        <Spinner
+            android:id="@+id/blood_group_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/spinner"
+            android:entries="@array/blood_group_list"
+            android:padding="13sp"
+            android:prompt="@string/enter_blood_group" />
+        <EditText
+            android:textSize="17sp"
+            android:id="@+id/comment_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/edit_text"
+            android:hint="@string/write_something"
+            android:padding="13sp" />
+
+        <EditText
+            android:textSize="17sp"
+            android:id="@+id/patient_name_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/edit_text"
+            android:hint="@string/patient_name"
+            android:padding="13sp" />
+
+
+        <!--<TextView-->
+            <!--android:textSize="17sp"-->
+            <!--android:id="@+id/location_request"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="7sp"-->
+            <!--android:text="Pick location"-->
+            <!--android:hint="@string/location_or_hospital"-->
+            <!--android:padding="13sp" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Location"
+            android:textSize="17sp"
+            android:layout_marginBottom="10sp"/>
+        <Spinner
+
+            android:id="@+id/location_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/spinner"
+            android:entries="@array/all_location"
+            android:padding="13sp"
+            android:prompt="@string/enter_blood_group" />
+
+        <EditText
+            android:inputType="number"
+            android:textSize="17sp"
+            android:id="@+id/mobile_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/edit_text"
+            android:hint="@string/mobile_no"
+            android:padding="13sp" />
+
+        <Button
+            android:id="@+id/request_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"
+            android:padding="13sp"
+            android:text="@string/request_blood"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

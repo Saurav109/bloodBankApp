@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.EditProfile"
+    android:padding="10sp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:contentDescription="@string/logo"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile Information"
+            android:textSize="23sp"
+            android:layout_marginBottom="10sp"/>
+        <ImageView
+            android:id="@+id/profile_picture_edit"
+            android:onClick="chooseImage"
+            android:layout_width="match_parent"
+            android:layout_height="400sp"
+            android:src="@mipmap/profile_icon"/>
+        <EditText
+            android:background="@drawable/edit_text"
+            android:padding="13sp"
+            android:layout_marginBottom="7sp"
+            android:id="@+id/name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_name"
+            android:inputType="textEmailAddress"
+            android:textSize="23sp" />
+
+        <EditText
+            android:background="@drawable/edit_text"
+            android:padding="13sp"
+            android:layout_marginBottom="7sp"
+            android:id="@+id/email_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_email"
+            android:inputType="textEmailAddress"
+            android:textSize="23sp" />
+
+
+        <EditText
+            android:background="@drawable/edit_text"
+            android:padding="13sp"
+            android:layout_marginBottom="7sp"
+            android:id="@+id/mobile_no_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mobile_no"
+            android:inputType="number"
+            android:textSize="23sp" />
+        <TextView
+            android:padding="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Choose your blood group :"
+            android:textSize="17sp"
+            android:layout_marginBottom="7sp"
+            android:textColor="@color/black"/>
+        <Spinner
+            android:padding="13sp"
+            android:background="@drawable/spinner"
+            android:layout_marginBottom="7sp"
+            android:id="@+id/blood_group_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/blood_group_list"
+            android:prompt="@string/enter_blood_group" />
+
+        <EditText
+            android:background="@drawable/edit_text"
+            android:padding="13sp"
+            android:layout_marginBottom="7sp"
+            android:id="@+id/birthday_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_birth_date"
+            android:inputType="date"
+            android:textSize="23sp"/>
+
+        <EditText
+            android:background="@drawable/edit_text"
+            android:padding="13sp"
+            android:layout_marginBottom="7sp"
+            android:id="@+id/occupation_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_occupation"
+            android:inputType="text"
+            android:textSize="23sp"/>
+
+        <!--<EditText-->
+        <!--android:background="@drawable/edit_text"-->
+        <!--android:padding="13sp"-->
+        <!--android:layout_marginBottom="7sp"-->
+        <!--android:id="@+id/location_sign_up"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="@string/enter_location"-->
+        <!--android:inputType="text"-->
+        <!--android:textSize="23sp" />-->
+        <Spinner
+            android:id="@+id/location_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/spinner"
+            android:entries="@array/all_location"
+            android:padding="13sp"
+            android:prompt="@string/enter_blood_group" />
+
+        <EditText
+            android:background="@drawable/edit_text"
+            android:padding="13sp"
+            android:layout_marginBottom="7sp"
+            android:id="@+id/comment_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_something_about_you"
+            android:inputType="text"
+            android:textSize="23sp" />
+
+        <Button
+            android:background="@drawable/button_ripple"
+            android:textColor="@color/white"
+            android:id="@+id/sign_up_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="save"
+            android:onClick="saveProfile"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="23sp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:drawableStart="@drawable/back_icon"
+                android:id="@+id/go_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="@string/back_to_login"
+                android:textSize="23sp" />
+
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:contentDescription="@string/logo"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_title"
+                android:textSize="23sp" />
+
+            <TextView
+                android:layout_marginBottom="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alt_text_sign_up"
+                android:textSize="17sp"
+                android:textStyle="italic"
+                />
+
+
+            <EditText
+                android:background="@drawable/edit_text"
+                android:padding="13sp"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/name_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_name"
+                android:inputType="textEmailAddress"
+                android:textSize="23sp" />
+
+            <EditText
+                android:background="@drawable/edit_text"
+                android:padding="13sp"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/email_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_email"
+                android:inputType="textEmailAddress"
+                android:textSize="23sp" />
+
+            <EditText
+                android:background="@drawable/edit_text"
+                android:padding="13sp"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/password_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_password"
+                android:inputType="textPassword"
+                android:textSize="23sp" />
+
+            <EditText
+                android:background="@drawable/edit_text"
+                android:padding="13sp"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/password_two_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_password_again_to_confirm"
+                android:inputType="textPassword"
+                android:textSize="23sp" />
+
+            <EditText
+                android:background="@drawable/edit_text"
+                android:padding="13sp"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/mobile_no_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mobile_no"
+                android:inputType="number"
+                android:textSize="23sp" />
+            <TextView
+                android:padding="13sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Choose your blood group :"
+                android:textSize="17sp"
+                android:layout_marginBottom="7sp"
+                android:textColor="@color/black"/>
+            <Spinner
+                android:padding="13sp"
+                android:background="@drawable/spinner"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/blood_group_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/blood_group_list"
+                android:prompt="@string/enter_blood_group" />
+
+            <EditText
+                android:background="@drawable/edit_text"
+                android:padding="13sp"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/birthday_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_your_birth_date"
+                android:inputType="date"
+                android:textSize="23sp"/>
+
+            <EditText
+                android:background="@drawable/edit_text"
+                android:padding="13sp"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/occupation_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_your_occupation"
+                android:inputType="text"
+                android:textSize="23sp"/>
+
+            <!--<EditText-->
+                <!--android:background="@drawable/edit_text"-->
+                <!--android:padding="13sp"-->
+                <!--android:layout_marginBottom="7sp"-->
+                <!--android:id="@+id/location_sign_up"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="@string/enter_location"-->
+                <!--android:inputType="text"-->
+                <!--android:textSize="23sp" />-->
+            <Spinner
+
+                android:id="@+id/location_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7sp"
+                android:background="@drawable/spinner"
+                android:entries="@array/all_location"
+                android:padding="13sp"
+                android:prompt="@string/enter_blood_group" />
+
+            <EditText
+                android:background="@drawable/edit_text"
+                android:padding="13sp"
+                android:layout_marginBottom="7sp"
+                android:id="@+id/comment_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_something_about_you"
+                android:inputType="text"
+                android:textSize="23sp" />
+
+            <Button
+                android:background="@drawable/button_ripple"
+                android:textColor="@color/white"
+                android:id="@+id/sign_up_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_button_text"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
