@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Blood db</string>
+    <string name="app_name">Blood Finder</string>
 
     <string-array name="blood_group_list">
         <item>O+</item>
@@ -86,5 +86,6 @@
     <string name="forget_password">forget password</string>
     <string name="title_activity_maps">Map</string>
     <string name="search_location">search location</string>
+    <string name="hospital_name">hospital name</string>
 
 </resources>

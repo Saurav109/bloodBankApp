@@ -8,11 +8,13 @@ public class ProfileValueModel {
     String imageUrl, bloodGroup, name, email, occupation, comment, mobileNo, location, birthday;
 
     HashMap <String,Double> latLon;
+    long timeEntry;
+    long bloodEntryTimeSnapshot;
 
     public ProfileValueModel() {
     }
 
-    public ProfileValueModel(String imageUrl, String bloodGroup, String name, String email, String occupation, String comment, String mobileNo, String location, String birthday, HashMap<String, Double> latLon) {
+    public ProfileValueModel(String imageUrl, String bloodGroup, String name, String email, String occupation, String comment, String mobileNo, String location, String birthday, HashMap<String, Double> latLon,long bloodEntryTimeSnapshot) {
         this.imageUrl = imageUrl;
         this.bloodGroup = bloodGroup;
         this.name = name;
@@ -23,6 +25,15 @@ public class ProfileValueModel {
         this.location = location;
         this.birthday = birthday;
         this.latLon = latLon;
+        this.bloodEntryTimeSnapshot=bloodEntryTimeSnapshot;
+    }
+
+    public long getBloodEntryTimeSnapshot() {
+        return bloodEntryTimeSnapshot;
+    }
+
+    public void setBloodEntryTimeSnapshot(long bloodEntryTimeSnapshot) {
+        this.bloodEntryTimeSnapshot = bloodEntryTimeSnapshot;
     }
 
     public void setImageUrl(String imageUrl) {

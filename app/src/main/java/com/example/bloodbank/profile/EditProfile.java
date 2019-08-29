@@ -46,6 +46,7 @@ public class EditProfile extends AppCompatActivity {
     Spinner bloodGroup, location;
     ImageView profilePicture;
     private Uri filePath=null;
+    long entryTime=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class EditProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ProfileValueModel profileValueModel = dataSnapshot.getValue(ProfileValueModel.class);
                 setAllData(profileValueModel);
+                entryTime=profileValueModel.getBloodEntryTimeSnapshot();
             }
 
             @Override
@@ -134,7 +136,7 @@ public class EditProfile extends AppCompatActivity {
         HashMap<String,Double> la=new HashMap<>();
         la.put("lat",latLon.getLat());
         la.put("lon",latLon.getLon());
-        ProfileValueModel profileValueModel = new ProfileValueModel("", bloodGroup, name, email, occupation, comment, mobileNo, location, birthday, la);
+        ProfileValueModel profileValueModel = new ProfileValueModel("", bloodGroup, name, email, occupation, comment, mobileNo, location, birthday, la,entryTime);
         assert user != null;
         userRef.child(user.getUid()).setValue(profileValueModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -185,6 +187,7 @@ public class EditProfile extends AppCompatActivity {
         if(filePath!=null){
             final ProgressDialog progressDialog =new ProgressDialog(this);
             progressDialog.setTitle("Uploading");
+            progressDialog.setCancelable(false);
             progressDialog.show();
 
             StorageReference reference= FirebaseStorage.getInstance().getReference().child("images/"+uuid);

@@ -30,7 +30,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class RequestBlood extends Fragment implements View.OnClickListener  {
     Context context;
-    EditText name, comment, mobileNo;
+    EditText name, comment, mobileNo,hospital;
     Spinner location;
     private final static int PLACE_PICKER_REQUEST = 111;
 //    TextView searchLink;
@@ -59,6 +59,7 @@ public class RequestBlood extends Fragment implements View.OnClickListener  {
         comment = view.findViewById(R.id.comment_request);
         mobileNo = view.findViewById(R.id.mobile_request);
         bloodGroup = view.findViewById(R.id.blood_group_request);
+        hospital=view.findViewById(R.id.hospital_request);
         requestButton = view.findViewById(R.id.request_button);
         requestButton.setOnClickListener(this);
 
@@ -89,28 +90,36 @@ public class RequestBlood extends Fragment implements View.OnClickListener  {
 
     @Override
     public void onClick(View v) {
-        String name, location, comment, mobileNo, bloodGroup;
+        String name, location, comment, mobileNo, bloodGroup,hospital;
         name = this.name.getText().toString().trim();
         location = this.location.getSelectedItem().toString().trim();
         comment = this.comment.getText().toString().trim();
         mobileNo = this.mobileNo.getText().toString().trim();
+        hospital=this.hospital.getText().toString();
         bloodGroup = this.bloodGroup.getSelectedItem().toString();
 
         if (!name.isEmpty() &&
                 !location.isEmpty() &&
                 !comment.isEmpty() &&
                 !mobileNo.isEmpty() &&
+                !hospital.isEmpty() &&
                 !bloodGroup.isEmpty()) {
-            requestBlood(name, location, comment, mobileNo, bloodGroup);
+
+            if(mobileNo.toCharArray().length>10){
+                requestBlood(name, location, comment, mobileNo, bloodGroup,hospital);
+            }else {
+                Helper.showToast(context, "Enter a valid number ");
+            }
+
         } else {
             Helper.showToast(context, "Enter all required field for requesting blood");
         }
     }
 
-    void requestBlood(String name, String location, String comment, String mobileNo, String bloodGroup) {
+    void requestBlood(String name, String location, String comment, String mobileNo, String bloodGroup,String hospital) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("feed");
         String uid = FirebaseAuth.getInstance().getUid();
-        BloodRequestValueModel bloodRequestValueModel = new BloodRequestValueModel(name, location, comment, mobileNo, bloodGroup, false,uid);
+        BloodRequestValueModel bloodRequestValueModel = new BloodRequestValueModel(name, location, comment, mobileNo, bloodGroup, false,uid,hospital);
 
         databaseReference.push().setValue(bloodRequestValueModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

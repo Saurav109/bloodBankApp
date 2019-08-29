@@ -35,7 +35,9 @@ public class SearchBloodActivity extends AppCompatActivity implements TextWatche
         setContentView(R.layout.search);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Helper.FEED);
+        searchTag="name";
         feed = Feed.newInstance(databaseReference, Adapter.BLOOD_REQUEST_ITEM_VIEW);
+
         //
         blood = findViewById(R.id.blood_search);
         blood.setOnClickListener(this);

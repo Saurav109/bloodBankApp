@@ -9,7 +9,7 @@
         android:title="Bank"
         android:icon="@drawable/bank_icon"/>
     <item android:id="@+id/donner_fragment_nav"
-        android:title="Donner"
+        android:title="Donors"
         android:icon="@drawable/list_icon"/>
     <item
         android:id="@+id/notification_fragment_nav"

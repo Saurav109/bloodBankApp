@@ -19,6 +19,8 @@ public class Helper {
     public static String BLOOD_BANK = "bloodBank";
     public static String BLOOD_GROUP = "bloodGroup";
     public static String UID = "uid";
+    //    public static long THREE_MOUNTH=Long.parseLong(7889237999);
+    public static long THREE_MOUNTH = Long.parseLong("7776000000");
 
     public static String Name = "name";
 
@@ -28,9 +30,16 @@ public class Helper {
 
     }
 
-    public static void call(Context context,String num){
+    public static void call(Context context, String num) {
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", num, null));
         context.startActivity(intent);
+    }
+
+    public static void message(Context context, String num) {
+        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+        smsIntent.setType("vnd.android-dir/mms-sms");
+        smsIntent.putExtra("address", num);
+        context.startActivity(smsIntent);
     }
 
     public static void setNotificationTopic(String topicName, Context context) {

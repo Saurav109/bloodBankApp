@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class BloodRequestValueModel {
     public long time;
-    private String name, location, comment, mobileNo, bloodGroup, uid;
+    private String name, location, comment, mobileNo, bloodGroup, uid,hospitalName;
     private boolean bloodFound;
     BloodRequestValueModel() {
     }
 
-    public BloodRequestValueModel(String name, String location, String comment, String mobileNo, String bloodGroup,boolean bloodFound, String uid) {
+    public BloodRequestValueModel(String name, String location, String comment, String mobileNo, String bloodGroup,boolean bloodFound, String uid,String hospitalName) {
         this.name = name;
         this.location = location;
         this.comment = comment;
@@ -19,7 +19,13 @@ public class BloodRequestValueModel {
         this.bloodGroup = bloodGroup;
         this.uid = uid;
         this.bloodFound=bloodFound;
+        this.hospitalName=hospitalName;
     }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
 
     public boolean isBloodFound() {
         return bloodFound;

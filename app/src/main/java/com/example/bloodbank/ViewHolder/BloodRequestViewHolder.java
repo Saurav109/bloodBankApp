@@ -26,10 +26,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BloodRequestViewHolder extends RecyclerView.ViewHolder {
-    private TextView name, location, comment, mobileNo, bloodGroup, time;
+    private TextView name, location, comment, mobileNo, bloodGroup, time,hospital;
     private String uid;
     private SimpleDateFormat formatter;
-    private Button bloodFound;
+    private Button bloodFound,call;
     private ImageView doneIcon;
     private ImageView deleteIcon;
     private Context context;
@@ -43,15 +43,17 @@ public class BloodRequestViewHolder extends RecyclerView.ViewHolder {
         bloodGroup = itemView.findViewById(R.id.blood_group_view_model);
         time = itemView.findViewById(R.id.time_view_model);
         bloodFound = itemView.findViewById(R.id.blood_found_button_view_model);
+        call=itemView.findViewById(R.id.call_button_view_model);
         doneIcon = itemView.findViewById(R.id.done_icon_view_model);
         deleteIcon=itemView.findViewById(R.id.delete_post_icon_view_model);
+        hospital=itemView.findViewById(R.id.hospital_view_model);
 
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         formatter = new SimpleDateFormat("HH:mm  dd/MM/yyyy");
     }
 
 
-    public void setView(final DataSnapshot dataSnapshot,Context context) {
+    public void setView(final DataSnapshot dataSnapshot, final Context context) {
         this.context=context;
         final BloodRequestValueModel bloodRequestValueModel = dataSnapshot.getValue(BloodRequestValueModel.class);
 
@@ -60,10 +62,18 @@ public class BloodRequestViewHolder extends RecyclerView.ViewHolder {
         comment.setText(bloodRequestValueModel.getComment());
         mobileNo.setText(bloodRequestValueModel.getMobileNo());
         bloodGroup.setText(bloodRequestValueModel.getBloodGroup());
+        hospital.setText(bloodRequestValueModel.getHospitalName());
 
         String dateString = formatter.format(new Date(bloodRequestValueModel.time));
         time.setText(dateString);
         String postOwnerUid=bloodRequestValueModel.getUid();
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Helper.call(context,bloodRequestValueModel.getMobileNo());
+            }
+        });
 
         Log.d("BLOODREQ", "setView: "+"current uid:"+uid+" post Uid: "+bloodRequestValueModel.getUid());
         //if this is user post or not

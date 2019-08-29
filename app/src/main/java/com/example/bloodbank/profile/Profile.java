@@ -3,6 +3,7 @@ package com.example.bloodbank.profile;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -30,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -37,14 +39,15 @@ import com.squareup.picasso.Picasso;
 
 public class Profile extends Fragment implements View.OnClickListener {
     ImageView profilePicture;
-    TextView bloodGroup, name, email, occupation, comment, mobileNo, location, age;
-    Button logout;
-    Button editProfile;
+    TextView bloodGroup, name, email, occupation, comment, mobileNo, location, age,isUserActive;
+    Button logout,editProfile,entryBlood,callButton,messageButton;
+
     Context context;
     Feed feed;
     View view;
     String uid="";
     boolean isLoaded;
+    boolean userActivity;
 
     public static Profile newInstance(String uid) {
         Profile profile=new Profile();
@@ -92,10 +95,34 @@ public class Profile extends Fragment implements View.OnClickListener {
         comment = view.findViewById(R.id.comment_profile);
         mobileNo = view.findViewById(R.id.mobile_no_profile);
         location = view.findViewById(R.id.location_profile);
-
+        isUserActive =view.findViewById(R.id.is_active_profile);
         age = view.findViewById(R.id.age_profile);
+        entryBlood=view.findViewById(R.id.entry_blood_button_profile);
+        entryBlood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                entryBloodDialog();
+            }
+        });
+
         logout =view.findViewById(R.id.logout_profile);
         logout.setOnClickListener(this);
+        callButton=view.findViewById(R.id.call_button_profile);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Helper.call(context,mobileNo.getText().toString());
+            }
+        });
+
+        messageButton=view.findViewById(R.id.message_button_profile);
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Helper.message(context,mobileNo.getText().toString());
+            }
+        });
+
         editProfile=view.findViewById(R.id.edit_profile_button);
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,22 +131,27 @@ public class Profile extends Fragment implements View.OnClickListener {
             }
         });
 
-        //buttonClick
-        mobileNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.call(context,mobileNo.getText().toString());
-            }
-        });
-        location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        //buttonClick
+//        mobileNo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Helper.call(context,mobileNo.getText().toString());
+//            }
+//        });
 
-            }
-        });
+
+//        location.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
         if(!uid.isEmpty()){
             logout.setVisibility(View.GONE);
             editProfile.setVisibility(View.GONE);
+            callButton.setVisibility(View.GONE);
+            messageButton.setVisibility(View.GONE);
+            entryBlood.setVisibility(View.GONE);
         }
 
         changeFragment(R.id.profile_activity_frame,feed,"profileFeed");
@@ -167,6 +199,23 @@ public class Profile extends Fragment implements View.OnClickListener {
         comment.setText(profileValueModel.getComment().isEmpty() ? "no comment" : profileValueModel.getComment());
         bloodGroup.setText(profileValueModel.getBloodGroup().isEmpty()?"unknown":profileValueModel.getBloodGroup());
         getImage(uid);
+
+        long userTimeEntry = profileValueModel.getBloodEntryTimeSnapshot();
+        long deviceTimeStamp = System.currentTimeMillis();
+
+        if (deviceTimeStamp - userTimeEntry > Helper.THREE_MOUNTH) {
+            isUserActive.setText("Active");
+            isUserActive.setTextColor(Color.RED);
+            userActivity=true;
+            entryBlood.setText("Set Profile Inactive");
+
+        }
+        if (deviceTimeStamp - userTimeEntry < Helper.THREE_MOUNTH) {
+            isUserActive.setText("Inactive");
+            isUserActive.setTextColor(Color.BLACK);
+            userActivity=false;
+            entryBlood.setText("Set Profile active");
+        }
     }
 
 
@@ -218,5 +267,57 @@ public class Profile extends Fragment implements View.OnClickListener {
 
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    void entryBloodDialog(){
+        String title="Are you  really want to inactive your profile?";
+        String message="People will see your profile as inactive , and you won't receive any notification";
+        if(!userActivity){
+            title="Are you  really want to active your profile?";
+            message="People will see your profile as active , and you will receive notification";
+        }
+
+        new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setIcon(R.mipmap.ic_launcher)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        entryBlood();
+
+                    }})
+                .setNegativeButton(android.R.string.no, null).show();
+    }
+    void entryBlood(){
+
+        String currentUid;
+        if(uid.isEmpty()){
+            currentUid = FirebaseAuth.getInstance().getUid();
+        }else {
+
+            currentUid=this.uid;
+        }
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Helper.USERS);
+        databaseReference = databaseReference.child(currentUid);
+
+        if(userActivity){
+
+            databaseReference.child("bloodEntryTimeSnapshot").setValue(ServerValue.TIMESTAMP)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Helper.showToast(context,"Successful!");
+                        }
+                    });
+        }else {
+            databaseReference.child("bloodEntryTimeSnapshot").setValue(0)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Helper.showToast(context,"Successful!");
+                        }
+                    });
+        }
     }
 }

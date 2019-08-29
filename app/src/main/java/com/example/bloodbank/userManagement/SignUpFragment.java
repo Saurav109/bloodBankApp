@@ -151,7 +151,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         HashMap<String,Double> la=new HashMap<>();
         la.put("lat",latLon.getLat());
         la.put("lon",latLon.getLon());
-        ProfileValueModel profileValueModel = new ProfileValueModel("", bloodGroup, name, email, occupation, comment, mobileNo, location, birthday,la);
+        long entryTime=0;
+        ProfileValueModel profileValueModel = new ProfileValueModel("", bloodGroup, name, email, occupation, comment, mobileNo, location, birthday,la,entryTime);
         assert user != null;
         userRef.child(user.getUid()).setValue(profileValueModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

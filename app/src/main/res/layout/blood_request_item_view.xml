@@ -57,8 +57,6 @@
 
 
                 <TextView
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawableStart="@drawable/map_icon"
                     android:textSize="17sp"
                     android:id="@+id/location_view_model"
                     android:layout_width="match_parent"
@@ -66,12 +64,20 @@
                     android:hint="@string/location_or_hospital" />
 
                 <TextView
-                    android:drawableStart="@drawable/call_icon"
+
+                    android:textSize="17sp"
+                    android:id="@+id/hospital_view_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="hospital name" />
+
+
+                <TextView
                     android:textSize="17sp"
                     android:id="@+id/mobile_view_model"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/mobile_no" />
+                    android:text="@string/mobile_no" />
 
                 <TextView
                     android:textStyle="bold"
@@ -79,13 +85,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="time" />
-                <Button
-                    android:drawableStart="@drawable/done_icon"
-                    android:background="@drawable/empty_blood_style"
-                    android:text="blood found"
-                    android:id="@+id/blood_found_button_view_model"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:drawableStart="@drawable/done_icon"
+                        android:background="@drawable/empty_blood_style"
+                        android:text="blood found"
+                        android:id="@+id/blood_found_button_view_model"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:layout_marginStart="10sp"
+                        android:drawableStart="@drawable/call_icon"
+                        android:background="@drawable/empty_blood_style"
+                        android:text="Call"
+                        android:id="@+id/call_button_view_model"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
                 <!--<TextView-->
                 <!--android:id="@+id/blood_group_view_model"-->
                 <!--android:layout_width="match_parent"-->

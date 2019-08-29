@@ -9,10 +9,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="7sp"
         android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="7sp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,12 +22,14 @@
             android:textColor="@color/black"
             android:textSize="23sp"
             android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
             android:text="Select Blood Group"
-            android:textSize="17sp"
-            android:layout_marginBottom="10sp"/>
+            android:textSize="17sp" />
+
         <Spinner
             android:id="@+id/blood_group_request"
             android:layout_width="match_parent"
@@ -37,42 +39,44 @@
             android:entries="@array/blood_group_list"
             android:padding="13sp"
             android:prompt="@string/enter_blood_group" />
+
         <EditText
-            android:textSize="17sp"
             android:id="@+id/comment_request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7sp"
             android:background="@drawable/edit_text"
             android:hint="@string/write_something"
-            android:padding="13sp" />
+            android:padding="13sp"
+            android:textSize="17sp" />
 
         <EditText
-            android:textSize="17sp"
             android:id="@+id/patient_name_request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7sp"
             android:background="@drawable/edit_text"
             android:hint="@string/patient_name"
-            android:padding="13sp" />
+            android:padding="13sp"
+            android:textSize="17sp" />
 
 
         <!--<TextView-->
-            <!--android:textSize="17sp"-->
-            <!--android:id="@+id/location_request"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="7sp"-->
-            <!--android:text="Pick location"-->
-            <!--android:hint="@string/location_or_hospital"-->
-            <!--android:padding="13sp" />-->
+        <!--android:textSize="17sp"-->
+        <!--android:id="@+id/location_request"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="7sp"-->
+        <!--android:text="Pick location"-->
+        <!--android:hint="@string/location_or_hospital"-->
+        <!--android:padding="13sp" />-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
             android:text="Select Location"
-            android:textSize="17sp"
-            android:layout_marginBottom="10sp"/>
+            android:textSize="17sp" />
+
         <Spinner
 
             android:id="@+id/location_request"
@@ -85,15 +89,28 @@
             android:prompt="@string/enter_blood_group" />
 
         <EditText
-            android:inputType="number"
-            android:textSize="17sp"
+            android:id="@+id/hospital_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/edit_text"
+            android:hint="@string/hospital_name"
+
+
+            android:padding="13sp"
+            android:textSize="17sp" />
+
+        <EditText
+            android:maxLength="16"
             android:id="@+id/mobile_request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7sp"
             android:background="@drawable/edit_text"
+            android:inputType="number"
             android:hint="@string/mobile_no"
-            android:padding="13sp" />
+            android:padding="13sp"
+            android:textSize="17sp" />
 
         <Button
             android:id="@+id/request_button"

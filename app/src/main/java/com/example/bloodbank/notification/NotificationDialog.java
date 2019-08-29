@@ -40,8 +40,10 @@ public class NotificationDialog extends Activity {
 
 
     public void openNotification(View view) {
-        Intent intent = new Intent(getApplicationContext(), Notification.class);
+        Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
     public void closeDialog(View view) {

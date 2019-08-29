@@ -10,28 +10,36 @@
         android:layout_centerInParent="true"
         android:layout_margin="23sp"
         android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login_title"
-            android:textSize="27sp" />
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/alt_text_login"
-            android:textSize="17sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="17sp"/>
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:contentDescription="@string/logo"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_title"
+                android:textSize="23sp" />
+
+            <TextView
+                android:layout_marginBottom="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alt_text_sign_up"
+                android:textSize="17sp"
+                android:textStyle="italic"
+                />
+        </LinearLayout>
 
 
         <EditText
