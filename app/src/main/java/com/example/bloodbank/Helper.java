@@ -36,10 +36,15 @@ public class Helper {
     }
 
     public static void message(Context context, String num) {
-        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
-        smsIntent.setType("vnd.android-dir/mms-sms");
-        smsIntent.putExtra("address", num);
-        context.startActivity(smsIntent);
+//        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+//        smsIntent.setType("vnd.android-dir/mms-sms");
+//        smsIntent.putExtra("address", num);
+//        context.startActivity(smsIntent);
+//
+
+
+        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", num, null)));
+
     }
 
     public static void setNotificationTopic(String topicName, Context context) {
