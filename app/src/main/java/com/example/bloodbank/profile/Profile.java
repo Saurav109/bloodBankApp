@@ -149,9 +149,12 @@ public class Profile extends Fragment implements View.OnClickListener {
         if(!uid.isEmpty()){
             logout.setVisibility(View.GONE);
             editProfile.setVisibility(View.GONE);
+//            callButton.setVisibility(View.GONE);
+//            messageButton.setVisibility(View.GONE);
+            entryBlood.setVisibility(View.GONE);
+        }else {
             callButton.setVisibility(View.GONE);
             messageButton.setVisibility(View.GONE);
-            entryBlood.setVisibility(View.GONE);
         }
 
         changeFragment(R.id.profile_activity_frame,feed,"profileFeed");
