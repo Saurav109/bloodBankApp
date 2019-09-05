@@ -16,11 +16,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.bloodbank.Helper;
 import com.example.bloodbank.LatLon;
-import com.example.bloodbank.MainActivity;
 import com.example.bloodbank.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -102,7 +100,7 @@ public class EditProfile extends AppCompatActivity {
         });
     }
     private void updateLabel() {
-        String myFormat = "MM/dd/yyyy"; //In which you need put here
+        String myFormat = Helper.DATE_FORMAT;//In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         age.setText(sdf.format(myCalendar.getTime()));

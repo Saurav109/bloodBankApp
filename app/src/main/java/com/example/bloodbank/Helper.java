@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 public class Helper {
 
+    public static String DATE_FORMAT = "dd/MM/yyyy";
     public static String FEED = "feed";
     public static String USERS = "users";
     public static String BLOOD_BANK = "bloodBank";

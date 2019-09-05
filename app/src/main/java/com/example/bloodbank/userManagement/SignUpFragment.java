@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import com.example.bloodbank.Helper;
 import com.example.bloodbank.LatLon;
-import com.example.bloodbank.MainActivity;
 import com.example.bloodbank.R;
 import com.example.bloodbank.Splash;
 import com.example.bloodbank.profile.ProfileValueModel;
@@ -113,7 +112,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     }
 
     private void updateLabel() {
-        String myFormat = "MM/dd/yyyy"; //In which you need put here
+        String myFormat = Helper.DATE_FORMAT; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         birthday.setText(sdf.format(myCalendar.getTime()));
