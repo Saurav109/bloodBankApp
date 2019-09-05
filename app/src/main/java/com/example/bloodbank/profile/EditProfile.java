@@ -1,5 +1,6 @@
 package com.example.bloodbank.profile;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -37,16 +39,20 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Objects;
 
 public class EditProfile extends AppCompatActivity {
     final int PICK_IMAGE_REQ = 13290;
     EditText name, email, occupation, comment, mobileNo, age;
-    Spinner bloodGroup, location;
+    Spinner bloodGroup, location,drug,aids,jaundice,otherDiseases,cancer;
     ImageView profilePicture;
     private Uri filePath=null;
     long entryTime=0;
+    Calendar myCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +66,47 @@ public class EditProfile extends AppCompatActivity {
         comment = findViewById(R.id.comment_edit);
         mobileNo = findViewById(R.id.mobile_no_edit);
         location = findViewById(R.id.location_edit);
+        drug=findViewById(R.id.drug_addicted);
+        jaundice=findViewById(R.id.jaundice_patient);
+        otherDiseases=findViewById(R.id.other_Blood_effected_diseases);
+        aids=findViewById(R.id.aids_patient);
+        cancer=findViewById(R.id.cancer_patient);
+
         age = findViewById(R.id.birthday_edit);
         profilePicture = findViewById(R.id.profile_picture_edit);
-    }
 
+
+        myCalendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+        age.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(EditProfile.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+    }
+    private void updateLabel() {
+        String myFormat = "MM/dd/yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        age.setText(sdf.format(myCalendar.getTime()));
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -136,7 +179,10 @@ public class EditProfile extends AppCompatActivity {
         HashMap<String,Double> la=new HashMap<>();
         la.put("lat",latLon.getLat());
         la.put("lon",latLon.getLon());
-        ProfileValueModel profileValueModel = new ProfileValueModel("", bloodGroup, name, email, occupation, comment, mobileNo, location, birthday, la,entryTime);
+//        ProfileValueModel profileValueModel = new ProfileValueModel("", bloodGroup, name, email, occupation, comment, mobileNo, location, birthday, la,entryTime);
+
+
+        ProfileValueModel profileValueModel=new ProfileValueModel("",bloodGroup,name,email,occupation,comment,mobileNo,location,drug.getSelectedItem().toString(),aids.getSelectedItem().toString(),jaundice.getSelectedItem().toString(),otherDiseases.getSelectedItem().toString(),cancer.getSelectedItem().toString(),birthday,la,entryTime);
         assert user != null;
         userRef.child(user.getUid()).setValue(profileValueModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -146,6 +192,7 @@ public class EditProfile extends AppCompatActivity {
                         uploadImage(FirebaseAuth.getInstance().getUid());
                     }else {
                         Helper.showToast(EditProfile.this, "Edit Successful");
+                        finish();
                     }
 
                 } else {
@@ -198,6 +245,7 @@ public class EditProfile extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
                             Helper.showToast(EditProfile.this, "Edit Successful");
+                            finish();
                             filePath=null;
                         }
                     })
@@ -217,4 +265,5 @@ public class EditProfile extends AppCompatActivity {
 
         }
     }
+
 }

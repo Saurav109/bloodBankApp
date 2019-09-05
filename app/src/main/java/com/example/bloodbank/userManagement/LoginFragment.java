@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.bloodbank.Helper;
 import com.example.bloodbank.MainActivity;
 import com.example.bloodbank.R;
+import com.example.bloodbank.Splash;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,6 +40,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.login, container, false);
     }
 
@@ -63,6 +66,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.d("LOGIN", "onCreate: login");
+
         userMngInterface = (UserManagement) context;
         this.context = context;
     }
@@ -112,7 +117,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     void afterLogin() {
         progressDialog.dismiss();
-        Intent home = new Intent(context, MainActivity.class);
-        startActivity(home);
+        if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+            Intent home = new Intent(context, MainActivity.class);
+            startActivity(home);
+        }else {
+            FirebaseAuth.getInstance().signOut();
+            Helper.showToast(context,"please verify email address");
+            Intent home = new Intent(context, Splash.class);
+            startActivity(home);
+        }
     }
 }

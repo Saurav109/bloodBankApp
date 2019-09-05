@@ -37,26 +37,31 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Profile extends Fragment implements View.OnClickListener {
     ImageView profilePicture;
-    TextView bloodGroup, name, email, occupation, comment, mobileNo, location, age,isUserActive;
-    Button logout,editProfile,entryBlood,callButton,messageButton;
-
+    TextView bloodGroup, name, email, occupation, comment, mobileNo, location, age, isUserActive, donetText,lastDonation;
+    TextView drug, aids, jaundice, otherDiseases,cancer;
+    Button logout, editProfile, entryBlood, callButton, messageButton;
     Context context;
     Feed feed;
     View view;
-    String uid="";
+    String uid = "";
     boolean isLoaded;
     boolean userActivity;
 
     public static Profile newInstance(String uid) {
-        Profile profile=new Profile();
+        Profile profile = new Profile();
         profile.setUid(uid);
         return profile;
     }
-    void setUid(String uid){
-        this.uid=uid;
+
+    void setUid(String uid) {
+        this.uid = uid;
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -70,14 +75,14 @@ public class Profile extends Fragment implements View.OnClickListener {
         if (!isLoaded) {
             view = inflater.inflate(R.layout.profile, container, false);
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Helper.FEED);
-            String profileUid=uid;
-            if(profileUid.isEmpty()){
-                profileUid=FirebaseAuth.getInstance().getUid();
-            }else {
-                profileUid=uid;
+            String profileUid = uid;
+            if (profileUid.isEmpty()) {
+                profileUid = FirebaseAuth.getInstance().getUid();
+            } else {
+                profileUid = uid;
             }
 
-            Query query=databaseReference.orderByChild(Helper.UID).startAt(profileUid).endAt(profileUid+"\uf8ff");
+            Query query = databaseReference.orderByChild(Helper.UID).startAt(profileUid).endAt(profileUid + "\uf8ff");
             feed = Feed.newInstance(query, Adapter.BLOOD_REQUEST_ITEM_VIEW);
             isLoaded = true;
         }
@@ -87,17 +92,20 @@ public class Profile extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         profilePicture = view.findViewById(R.id.image_profile);
         bloodGroup = view.findViewById(R.id.blood_group_profile);
+        donetText = view.findViewById(R.id.donet_text);
+        lastDonation=view.findViewById(R.id.last_donetion);
         name = view.findViewById(R.id.name_profile);
         email = view.findViewById(R.id.email_profile);
         occupation = view.findViewById(R.id.occupation_profile);
         comment = view.findViewById(R.id.comment_profile);
         mobileNo = view.findViewById(R.id.mobile_no_profile);
         location = view.findViewById(R.id.location_profile);
-        isUserActive =view.findViewById(R.id.is_active_profile);
+        isUserActive = view.findViewById(R.id.is_active_profile);
         age = view.findViewById(R.id.age_profile);
-        entryBlood=view.findViewById(R.id.entry_blood_button_profile);
+        entryBlood = view.findViewById(R.id.entry_blood_button_profile);
         entryBlood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,59 +113,53 @@ public class Profile extends Fragment implements View.OnClickListener {
             }
         });
 
-        logout =view.findViewById(R.id.logout_profile);
+        drug=view.findViewById(R.id.drug);
+        jaundice=view.findViewById(R.id.jaun);
+        otherDiseases=view.findViewById(R.id.other);
+        aids=view.findViewById(R.id.aids);
+        cancer=view.findViewById(R.id.cancer);
+
+
+        logout = view.findViewById(R.id.logout_profile);
         logout.setOnClickListener(this);
-        callButton=view.findViewById(R.id.call_button_profile);
+        callButton = view.findViewById(R.id.call_button_profile);
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Helper.call(context,mobileNo.getText().toString());
+                Helper.call(context, mobileNo.getText().toString());
             }
         });
 
-        messageButton=view.findViewById(R.id.message_button_profile);
+        messageButton = view.findViewById(R.id.message_button_profile);
         messageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Helper.message(context,mobileNo.getText().toString());
+                Helper.message(context, mobileNo.getText().toString());
             }
         });
 
-        editProfile=view.findViewById(R.id.edit_profile_button);
+        editProfile = view.findViewById(R.id.edit_profile_button);
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context,EditProfile.class));
+                startActivity(new Intent(context, EditProfile.class));
             }
         });
 
-//        //buttonClick
-//        mobileNo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Helper.call(context,mobileNo.getText().toString());
-//            }
-//        });
-
-
-//        location.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-        if(!uid.isEmpty()){
+        //other's profile
+        if (!uid.isEmpty()) {
+            donetText.setVisibility(View.GONE);
             logout.setVisibility(View.GONE);
             editProfile.setVisibility(View.GONE);
-//            callButton.setVisibility(View.GONE);
-//            messageButton.setVisibility(View.GONE);
             entryBlood.setVisibility(View.GONE);
-        }else {
+        } else
+        //owner's profile
+        {
             callButton.setVisibility(View.GONE);
             messageButton.setVisibility(View.GONE);
         }
 
-        changeFragment(R.id.profile_activity_frame,feed,"profileFeed");
+        changeFragment(R.id.profile_activity_frame, feed, "profileFeed");
     }
 
     @Override
@@ -168,11 +170,11 @@ public class Profile extends Fragment implements View.OnClickListener {
 
     void getProfileValue() {
         String currentUid;
-        if(uid.isEmpty()){
+        if (uid.isEmpty()) {
             currentUid = FirebaseAuth.getInstance().getUid();
-        }else {
+        } else {
 
-            currentUid=this.uid;
+            currentUid = this.uid;
         }
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Helper.USERS);
         databaseReference = databaseReference.child(currentUid);
@@ -181,7 +183,7 @@ public class Profile extends Fragment implements View.OnClickListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ProfileValueModel profileValueModel = dataSnapshot.getValue(ProfileValueModel.class);
-                setAllData(profileValueModel,dataSnapshot.getKey());
+                setAllData(profileValueModel, dataSnapshot.getKey());
             }
 
             @Override
@@ -191,7 +193,7 @@ public class Profile extends Fragment implements View.OnClickListener {
         });
     }
 
-    void setAllData(ProfileValueModel profileValueModel ,String uid) {
+    void setAllData(ProfileValueModel profileValueModel, String uid) {
 
         name.setText(profileValueModel.getName().isEmpty() ? "unknown" : profileValueModel.getName());
         age.setText(profileValueModel.getBirthday().isEmpty() ? "unknown" : profileValueModel.getBirthday());
@@ -200,29 +202,40 @@ public class Profile extends Fragment implements View.OnClickListener {
         email.setText(profileValueModel.getEmail().isEmpty() ? "unknown" : profileValueModel.getEmail());
         mobileNo.setText(profileValueModel.getEmail().isEmpty() ? "unknown" : profileValueModel.getMobileNo());
         comment.setText(profileValueModel.getComment().isEmpty() ? "no comment" : profileValueModel.getComment());
-        bloodGroup.setText(profileValueModel.getBloodGroup().isEmpty()?"unknown":profileValueModel.getBloodGroup());
+        bloodGroup.setText(profileValueModel.getBloodGroup().isEmpty() ? "unknown" : profileValueModel.getBloodGroup());
+
+        drug.setText(profileValueModel.getDrug());
+        cancer.setText(profileValueModel.getCancer());
+        otherDiseases.setText(profileValueModel.getOtherDiseases());
+        aids.setText(profileValueModel.getAids());
+        jaundice.setText(profileValueModel.getJaundice());
+
         getImage(uid);
 
         long userTimeEntry = profileValueModel.getBloodEntryTimeSnapshot();
         long deviceTimeStamp = System.currentTimeMillis();
 
+
         if (deviceTimeStamp - userTimeEntry > Helper.THREE_MOUNTH) {
             isUserActive.setText("Active");
             isUserActive.setTextColor(Color.RED);
-            userActivity=true;
+            userActivity = true;
             entryBlood.setText("Set Profile Inactive");
+            lastDonation.setVisibility(View.GONE);
 
         }
         if (deviceTimeStamp - userTimeEntry < Helper.THREE_MOUNTH) {
+            long daysPast = (deviceTimeStamp -userTimeEntry )/ (1000 * 60 * 60 * 24);
+            lastDonation.setText("Last blood donated "+daysPast+" days ago");
             isUserActive.setText("Inactive");
             isUserActive.setTextColor(Color.BLACK);
-            userActivity=false;
+            userActivity = false;
             entryBlood.setText("Set Profile active");
         }
     }
 
 
-    void getImage(String uid){
+    void getImage(String uid) {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference("images");
         storageReference.child(uid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -239,7 +252,7 @@ public class Profile extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        isLoaded=false;
+        isLoaded = false;
     }
 
     @Override
@@ -254,30 +267,32 @@ public class Profile extends Fragment implements View.OnClickListener {
 
                     public void onClick(DialogInterface dialog, int whichButton) {
                         FirebaseAuth.getInstance().signOut();
-                        Helper.showToast(context,"Logout!");
-                    }})
+                        Helper.showToast(context, "Logout!");
+                    }
+                })
                 .setNegativeButton(android.R.string.no, null).show();
     }
-    void changeFragment(int frameId,Fragment fragment,String tag){
-        FragmentTransaction fragmentTransaction=getChildFragmentManager().beginTransaction();
+
+    void changeFragment(int frameId, Fragment fragment, String tag) {
+        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         Fragment frStack = getChildFragmentManager().findFragmentByTag(tag);
 
-        if(frStack == null){
-            fragmentTransaction.replace(frameId,fragment,tag);
-        }else {
-            fragmentTransaction.replace(frameId,frStack);
+        if (frStack == null) {
+            fragmentTransaction.replace(frameId, fragment, tag);
+        } else {
+            fragmentTransaction.replace(frameId, frStack);
         }
 
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
-    void entryBloodDialog(){
-        String title="Are you  really want to inactive your profile?";
-        String message="People will see your profile as inactive , and you won't receive any notification";
-        if(!userActivity){
-            title="Are you  really want to active your profile?";
-            message="People will see your profile as active , and you will receive notification";
+    void entryBloodDialog() {
+        String title = "Are you  really want to inactive your profile?";
+        String message = "People will see your profile as inactive , and you won't receive any notification";
+        if (!userActivity) {
+            title = "Are you  really want to active your profile?";
+            message = "People will see your profile as active , and you will receive notification";
         }
 
         new AlertDialog.Builder(context)
@@ -289,36 +304,38 @@ public class Profile extends Fragment implements View.OnClickListener {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         entryBlood();
 
-                    }})
+                    }
+                })
                 .setNegativeButton(android.R.string.no, null).show();
     }
-    void entryBlood(){
+
+    void entryBlood() {
 
         String currentUid;
-        if(uid.isEmpty()){
+        if (uid.isEmpty()) {
             currentUid = FirebaseAuth.getInstance().getUid();
-        }else {
+        } else {
 
-            currentUid=this.uid;
+            currentUid = this.uid;
         }
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Helper.USERS);
         databaseReference = databaseReference.child(currentUid);
 
-        if(userActivity){
+        if (userActivity) {
 
             databaseReference.child("bloodEntryTimeSnapshot").setValue(ServerValue.TIMESTAMP)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Helper.showToast(context,"Successful!");
+                            Helper.showToast(context, "Successful!");
                         }
                     });
-        }else {
+        } else {
             databaseReference.child("bloodEntryTimeSnapshot").setValue(0)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Helper.showToast(context,"Successful!");
+                            Helper.showToast(context, "Successful!");
                         }
                     });
         }

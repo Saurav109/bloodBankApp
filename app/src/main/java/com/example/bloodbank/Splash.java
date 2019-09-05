@@ -29,8 +29,10 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.d(TAG, "onCreate: Splash");
 
-        if (user != null) {
+
+        if (user != null && user.isEmailVerified()) {
             databaseReference = FirebaseDatabase.getInstance().getReference("/users");
             databaseReference = databaseReference.child(user.getUid());
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -50,6 +52,7 @@ public class Splash extends AppCompatActivity {
             });
         } else {
             userManagement();
+            Helper.showToast(this,"Please verify email address");
         }
     }
 

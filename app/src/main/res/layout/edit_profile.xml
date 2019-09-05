@@ -84,16 +84,135 @@
             android:entries="@array/blood_group_list"
             android:prompt="@string/enter_blood_group" />
 
-        <EditText
-            android:background="@drawable/edit_text"
-            android:padding="13sp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="7sp"
+            android:padding="13sp"
+            android:text="Are you Cancer Patient? :"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <Spinner
+
+            android:id="@+id/cancer_patient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/spinner"
+            android:entries="@array/yes_no_array"
+            android:padding="13sp"
+            android:prompt="@string/enter_blood_group" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:padding="13sp"
+            android:text="Are you AIDS Patient? :"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <Spinner
+
+            android:id="@+id/aids_patient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/spinner"
+            android:entries="@array/yes_no_array"
+            android:padding="13sp"
+            android:prompt="@string/enter_blood_group" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:padding="13sp"
+            android:text="Are you Jaundice Patient? :"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+        <Spinner
+
+            android:id="@+id/jaundice_patient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/spinner"
+            android:entries="@array/yes_no_array"
+            android:padding="13sp"
+            android:prompt="@string/enter_blood_group" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:padding="13sp"
+            android:text="Do you have other Blood effected diseases?:"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <Spinner
+
+            android:id="@+id/other_Blood_effected_diseases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/spinner"
+            android:entries="@array/yes_no_array"
+            android:padding="13sp"
+            android:prompt="@string/enter_blood_group" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:padding="13sp"
+            android:text="Are you drug addict? :"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <Spinner
+
+            android:id="@+id/drug_addicted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/spinner"
+            android:entries="@array/yes_no_array"
+            android:padding="13sp"
+            android:prompt="@string/enter_blood_group" />
+
+
+        <!--<EditText-->
+            <!--android:background="@drawable/edit_text"-->
+            <!--android:padding="13sp"-->
+            <!--android:layout_marginBottom="7sp"-->
+            <!--android:id="@+id/birthday_edit"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/enter_your_birth_date"-->
+            <!--android:inputType="date"-->
+            <!--android:textSize="23sp"/>-->
+
+
+        <EditText
+
             android:id="@+id/birthday_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/edit_text"
+            android:clickable="true"
+            android:focusable="false"
             android:hint="@string/enter_your_birth_date"
             android:inputType="date"
-            android:textSize="23sp"/>
+            android:padding="13sp"
+            android:textSize="23sp" />
 
         <EditText
             android:background="@drawable/edit_text"

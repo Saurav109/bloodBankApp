@@ -54,6 +54,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+        viewHolder.setIsRecyclable(false);
         Log.e("Adapter", "onBindViewHolder: binding view to index :" + i + " key: " + dataSnapshotCustomHashMap.getValueByIndex(i));
         DataSnapshot valueModel = dataSnapshotCustomHashMap.getValueByIndex(i);
 

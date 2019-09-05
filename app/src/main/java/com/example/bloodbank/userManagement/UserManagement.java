@@ -15,11 +15,13 @@ public class UserManagement extends AppCompatActivity implements UserMngInterfac
     LoginFragment loginFragment;
     SignUpFragment signUpFragment;
     ResetPassword resetPassword;
-
+    String TAG="USER_MANGEMENT";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_management);
+        Log.d(TAG, "onCreate: user management");
+
         frameLayout = findViewById(R.id.userMngFrame);
         loginFragment = new LoginFragment();
         signUpFragment = new SignUpFragment();

@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public class ProfileValueModel {
     String imageUrl, bloodGroup, name, email, occupation, comment, mobileNo, location, birthday;
+    String drug,aids,jaundice,otherDiseases,cancer;
 
     HashMap <String,Double> latLon;
     long timeEntry;
@@ -14,7 +15,7 @@ public class ProfileValueModel {
     public ProfileValueModel() {
     }
 
-    public ProfileValueModel(String imageUrl, String bloodGroup, String name, String email, String occupation, String comment, String mobileNo, String location, String birthday, HashMap<String, Double> latLon,long bloodEntryTimeSnapshot) {
+    public ProfileValueModel(String imageUrl, String bloodGroup, String name, String email, String occupation, String comment, String mobileNo, String location,String drug,String aids,String jaundice,String otherDiseases,String cancer, String birthday, HashMap<String, Double> latLon,long bloodEntryTimeSnapshot) {
         this.imageUrl = imageUrl;
         this.bloodGroup = bloodGroup;
         this.name = name;
@@ -26,6 +27,51 @@ public class ProfileValueModel {
         this.birthday = birthday;
         this.latLon = latLon;
         this.bloodEntryTimeSnapshot=bloodEntryTimeSnapshot;
+        this.drug=drug;
+        this.aids=aids;
+        this.jaundice=jaundice;
+        this.cancer=cancer;
+        this.otherDiseases=otherDiseases;
+    }
+
+    public String getCancer() {
+        return cancer;
+    }
+
+    public void setCancer(String cancer) {
+        this.cancer = cancer;
+    }
+
+    public void setDrug(String drug) {
+        this.drug = drug;
+    }
+
+    public void setAids(String aids) {
+        this.aids = aids;
+    }
+
+    public void setJaundice(String jaundice) {
+        this.jaundice = jaundice;
+    }
+
+    public void setOtherDiseases(String otherDiseases) {
+        this.otherDiseases = otherDiseases;
+    }
+
+    public String getDrug() {
+        return drug;
+    }
+
+    public String getAids() {
+        return aids;
+    }
+
+    public String getJaundice() {
+        return jaundice;
+    }
+
+    public String getOtherDiseases() {
+        return otherDiseases;
     }
 
     public long getBloodEntryTimeSnapshot() {

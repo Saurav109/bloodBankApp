@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
     <ScrollView
@@ -16,183 +16,350 @@
 
             <ImageView
                 android:id="@+id/image_profile"
+                android:layout_width="match_parent"
                 android:layout_height="450sp"
                 android:scaleType="centerCrop"
-                android:layout_width="match_parent"
                 android:src="@mipmap/profile_icon" />
+
             <android.support.v7.widget.CardView
-                android:layout_margin="13sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="8dp"
+                android:layout_margin="13sp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="0.0px"
-                android:clipToPadding="false"
-                android:clipChildren="false"
+                android:elevation="8dp"
                 card_view:cardElevation="10dp"
                 card_view:cardPreventCornerOverlap="false">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10sp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:layout_alignParentStart="true"
                             android:id="@+id/blood_group_profile"
-                            android:textColor="@color/white"
-                            android:background="@drawable/blood_style"
-                            android:padding="13sp"
-                            android:layout_margin="3sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_margin="3sp"
+                            android:background="@drawable/blood_style"
+                            android:padding="13sp"
                             android:text="B+"
-                            android:textSize="43sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="43sp" />
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_alignParentEnd="true">
+                            android:layout_alignParentEnd="true"
+                            android:orientation="horizontal">
 
                             <Button
                                 android:id="@+id/call_button_profile"
-                                android:layout_marginStart="10sp"
-                                android:drawableStart="@drawable/call_icon"
-                                android:background="@drawable/empty_blood_style"
-                                android:text="Call"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10sp"
+                                android:backgroundTint="@color/colorPrimaryDark"
+                                android:drawableStart="@drawable/call_icon"
+                                android:text="Call"
+                                android:textColor="@color/white" />
+
                             <Button
                                 android:id="@+id/message_button_profile"
-                                android:layout_marginStart="10sp"
-                                android:drawableStart="@drawable/message_icon"
-                                android:drawableTint="@color/colorPrimary"
-                                android:background="@drawable/empty_blood_style"
-                                android:text="Message"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10sp"
+                                android:backgroundTint="@color/green"
+                                android:drawableStart="@drawable/message_icon"
+                                android:drawableTint="@color/colorPrimaryDark"
+                                android:text="Message" />
                         </LinearLayout>
                     </RelativeLayout>
 
                     <TextView
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="33sp"
                         android:id="@+id/name_profile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Name" />
-                    <TextView
+                        android:text="Name"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="23sp"
+                        android:textSize="33sp"
+                        android:textStyle="bold" />
+
+                    <TextView
                         android:id="@+id/is_active_profile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Name" />
-                    <TextView
+                        android:text="Active"
+                        android:textColor="@color/black"
                         android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/last_donetion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
                         android:id="@+id/comment_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Comment" />
+                        android:text="Comment"
+                        android:textSize="30sp" />
 
                     <TextView
-                        android:textSize="23sp"
                         android:id="@+id/email_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Email" />
+                        android:text="Email"
+                        android:textSize="23sp" />
 
                     <TextView
-                        android:drawableStart="@drawable/call_icon"
-                        android:drawableTint="@color/colorPrimaryDark"
-                        android:textSize="23sp"
                         android:id="@+id/mobile_no_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mobile No" />
+                        android:drawableStart="@drawable/call_icon"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:text="Mobile No"
+                        android:textSize="23sp" />
 
                     <TextView
-                        android:drawableStart="@drawable/map_icon"
-                        android:drawableTint="@color/colorPrimaryDark"
-                        android:textSize="23sp"
                         android:id="@+id/location_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location" />
+                        android:drawableStart="@drawable/map_icon"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:text="Location"
+                        android:textSize="23sp" />
 
                     <TextView
-                        android:textSize="23sp"
                         android:id="@+id/age_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Age" />
+                        android:text="Age"
+                        android:textSize="23sp" />
 
                     <TextView
-                        android:textSize="23sp"
                         android:id="@+id/occupation_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Occupation"
-                        />
+                        android:textSize="23sp" />
+                    <TextView
+                        android:layout_marginTop="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Other Blood Information :"
+                        android:textSize="23sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+                            android:text="Cancer Patient :"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                           />
+
+                        <TextView
+                            android:id="@+id/cancer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="a"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="Drug addict :"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                             />
+
+                        <TextView
+                            android:id="@+id/drug"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="a"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                             />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="Other Blood effected diseases :"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                             />
+
+                        <TextView
+                            android:id="@+id/other"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="a"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                           />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="Jaundice Patient :"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            />
+
+                        <TextView
+                            android:id="@+id/jaun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="a"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="AIDS Patient :"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                             />
+
+                        <TextView
+                            android:id="@+id/aids"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+
+                            android:text="a"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            />
+                    </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1sp"
-                        android:background="@color/grey"/>
+                        android:background="@color/grey" />
+
                     <TextView
-                        android:layout_marginTop="17sp"
-                        android:textSize="23sp"
+                        android:id="@+id/donet_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="17sp"
                         android:text="Set Profile inactive after donating blood"
-                        android:textStyle="bold"/>
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
                     <Button
-                        android:layout_marginStart="10sp"
-                        android:drawableStart="@drawable/add_icon"
-                        android:drawableTint="@color/colorPrimary"
-                        android:background="@drawable/empty_blood_style"
-                        android:text="Add Blood Entry "
+                        android:padding="7sp"
                         android:id="@+id/entry_blood_button_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="17sp"/>
+                        android:layout_marginStart="10sp"
+                        android:layout_marginBottom="17sp"
+                        android:background="@drawable/empty_blood_style"
+                        android:drawableStart="@drawable/add_icon"
+                        android:drawableTint="@color/colorPrimary"
+                        android:text="Add Blood Entry " />
+
                     <Button
-                        android:onClick="editProfile"
-                        android:textColor="@color/white"
-                        android:textAllCaps="false"
-                        android:padding="13sp"
-                        android:background="@drawable/button_ripple"
                         android:id="@+id/edit_profile_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Edit Profile"
-                        android:layout_marginBottom="7sp"/>
-                    <Button
-                        android:textColor="@color/white"
-                        android:textAllCaps="false"
-                        android:padding="13sp"
+                        android:layout_marginBottom="7sp"
                         android:background="@drawable/button_ripple"
+                        android:onClick="editProfile"
+                        android:padding="13sp"
+                        android:text="Edit Profile"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                    <Button
                         android:id="@+id/logout_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Logout"
-                        android:layout_marginBottom="10sp"/>
-                    <TextView
+                        android:layout_marginBottom="10sp"
+                        android:background="@drawable/button_ripple"
                         android:padding="13sp"
-                        android:textStyle="bold"
+                        android:text="Logout"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:padding="13sp"
+                        android:text="Recent Blood Request"
                         android:textSize="17sp"
-                        android:text="Recent Blood Request"/>
+                        android:textStyle="bold" />
+
                     <FrameLayout
                         android:id="@+id/profile_activity_frame"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
